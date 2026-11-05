@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="Useful Tools — quick access to free online tools for EMI calculations, GST invoices and resume building.">
+  <title>Useful Tools 🛠️ — Simple tools. Smarter work.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #090d19;
+      --panel: rgba(18, 25, 45, .78);
+      --line: rgba(255,255,255,.09);
+      --muted: #98a4bd;
+      --text: #f4f7ff;
+      --blue: #7c9cff;
+      --cyan: #5de2e7;
+      --violet: #b7a0ff;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; min-height: 100vh; color: var(--text);
+      background:
+        radial-gradient(ellipse at 12% 0%, rgba(68, 95, 190, .22), transparent 35%),
+        radial-gradient(ellipse at 90% 20%, rgba(65, 194, 205, .11), transparent 32%),
+        var(--bg);
+      font-family: "DM Sans", system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .shell { width: min(1080px, calc(100% - 36px)); margin: 0 auto; }
+    header { display:flex; align-items:center; justify-content:space-between; padding: 24px 0; }
+    .brand { display:flex; gap:12px; align-items:center; text-decoration:none; }
+    .brand-mark {
+      width:44px; height:44px; display:grid; place-items:center; border-radius:15px;
+      background: linear-gradient(145deg, #8ba8ff, #586be7 58%, #4b4ed2);
+      box-shadow: 0 8px 28px rgba(86, 105, 235, .28);
+    }
+    .brand-mark svg { width:25px; height:25px; }
+    .brand-name { font-family:"Space Grotesk", sans-serif; font-size:17px; font-weight:700; letter-spacing:-.4px; }
+    .brand-sub { color:var(--muted); font-size:11px; margin-top:2px; }
+    .availability { display:flex; align-items:center; gap:8px; color:#c4cde0; font-size:12px; padding:9px 12px; border:1px solid var(--line); border-radius:99px; background:rgba(255,255,255,.025); }
+    .dot { width:7px; height:7px; background:#67e8a5; border-radius:50%; box-shadow:0 0 12px rgba(103,232,165,.65); }
+    main { padding: 58px 0 76px; }
+    .hero { text-align:center; max-width:700px; margin:0 auto 42px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:8px; color:#c3d0ff; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:8px 12px; border:1px solid rgba(124,156,255,.22); border-radius:99px; background:rgba(124,156,255,.07); }
+    h1 { font-family:"Space Grotesk",sans-serif; font-size:clamp(38px, 7vw, 66px); letter-spacing:-2.8px; line-height:1.04; margin:22px 0 16px; }
+    h1 span { background:linear-gradient(100deg,#fff 5%,#a9bcff 55%,#68e2e4); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .hero p { color:var(--muted); font-size:clamp(15px,2vw,18px); line-height:1.7; margin:0 auto; max-width:540px; }
+    .section-top { display:flex; align-items:end; justify-content:space-between; margin:0 0 16px; gap:14px; }
+    .section-top h2 { margin:0; font:600 18px "Space Grotesk",sans-serif; letter-spacing:-.4px; }
+    .section-top span { color:var(--muted); font-size:12px; }
+    .tools-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+    .tool-card {
+      position:relative; display:flex; flex-direction:column; min-height:260px; padding:23px;
+      border:1px solid var(--line); border-radius:24px; text-decoration:none;
+      background:linear-gradient(150deg,rgba(24,33,57,.88),rgba(13,19,35,.86));
+      box-shadow:0 16px 45px rgba(0,0,0,.12);
+      transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease;
+      overflow:hidden; isolation:isolate;
+    }
+    .tool-card::before { content:""; position:absolute; z-index:-1; width:170px; height:170px; right:-80px; top:-90px; border-radius:50%; background:var(--glow); opacity:.14; filter:blur(2px); transition:transform .3s ease; }
+    .tool-card:hover { transform:translateY(-5px); border-color:rgba(153,176,255,.42); box-shadow:0 22px 54px rgba(0,0,0,.26); }
+    .tool-card:hover::before { transform:scale(1.35); }
+    .tool-card:focus-visible { outline:3px solid #9cb4ff; outline-offset:4px; }
+    .tool-icon { width:54px; height:54px; display:grid; place-items:center; border-radius:17px; background:var(--icon-bg); color:var(--icon-color); margin-bottom:24px; }
+    .tool-icon svg { width:27px; height:27px; }
+    .tool-card h3 { margin:0 0 9px; font:600 20px "Space Grotesk",sans-serif; letter-spacing:-.6px; }
+    .tool-card p { margin:0; color:var(--muted); font-size:13px; line-height:1.65; }
+    .card-bottom { margin-top:auto; padding-top:25px; display:flex; align-items:center; justify-content:space-between; }
+    .tag { color:#d4dcf0; font-size:11px; border:1px solid var(--line); border-radius:99px; padding:6px 9px; }
+    .arrow { width:34px; height:34px; border:1px solid var(--line); border-radius:50%; display:grid; place-items:center; color:#dce5ff; transition:transform .2s ease,background .2s ease; }
+    .tool-card:hover .arrow { transform:translate(2px,-2px); background:rgba(255,255,255,.08); }
+    .note { display:flex; align-items:center; justify-content:center; gap:10px; color:#8e9ab3; font-size:12px; text-align:center; margin-top:27px; }
+    .note svg { width:16px; height:16px; flex:0 0 auto; }
+    footer { border-top:1px solid var(--line); padding:20px 0 28px; color:#7f8aa3; font-size:12px; }
+    .footer-inner { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+    .footer-brand { color:#c9d2e8; font-weight:600; }
+    @media (max-width:760px) {
+      main { padding:40px 0 54px; }
+      .hero { margin-bottom:34px; }
+      .tools-grid { grid-template-columns:1fr; gap:12px; }
+      .tool-card { min-height:0; padding:19px; display:grid; grid-template-columns:54px 1fr 36px; column-gap:15px; align-items:center; border-radius:20px; }
+      .tool-icon { margin:0; grid-row:1 / span 2; }
+      .tool-copy { align-self:end; }
+      .tool-card h3 { font-size:17px; margin-bottom:5px; }
+      .tool-card p { font-size:12px; line-height:1.5; }
+      .card-bottom { margin:7px 0 0; padding:0; grid-column:2; }
+      .arrow { grid-column:3; grid-row:1 / span 2; }
+      .tag { font-size:10px; padding:5px 8px; }
+      .section-top { margin-bottom:13px; }
+      .availability { font-size:0; padding:10px; }
+      .footer-inner { flex-direction:column; text-align:center; }
+    }
+    @media (prefers-reduced-motion:reduce) { *,*::before,*::after { scroll-behavior:auto!important; transition:none!important; } }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <a class="brand" href="#" aria-label="Useful Tools home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 6.5a4.5 4.5 0 0 0-5.9 5.9L3.8 17.2a2.1 2.1 0 0 0 3 3l4.8-4.8a4.5 4.5 0 0 0 5.9-5.9l-2.7 2.7-3-3 2.7-2.7Z"/><path d="m17.5 3.5 3 3"/></svg>
+        </span>
+        <span><div class="brand-name">Useful Tools</div><div class="brand-sub">Everyday tools, made simple</div></span>
+      </a>
+      <div class="availability"><span class="dot"></span> 3 tools available</div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="eyebrow"><span>✦</span> YOUR PRODUCTIVITY CORNER</div>
+        <h1>Useful Tools <span>🛠️</span></h1>
+        <p>Simple, practical tools to help you calculate smarter, create invoices faster, and build your next opportunity.</p>
+      </section>
+
+      <section aria-labelledby="tools-heading">
+        <div class="section-top">
+          <h2 id="tools-heading">Explore your tools</h2>
+          <span>Choose a tool to get started ↘</span>
+        </div>
+        <div class="tools-grid">
+          <a class="tool-card" style="--glow:#6d94ff;--icon-bg:rgba(105,145,255,.14);--icon-color:#9db8ff" href="https://myemicalculatorindia.blogspot.com" target="_blank" rel="noopener noreferrer" aria-label="Open My EMI Calculator in a new tab">
+            <span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2.5"/><path d="M8 7h8M8 11h2m4 0h2M8 15h2m4 0h2M8 18h8"/></svg></span>
+            <span class="tool-copy"><h3>My EMI Calculator</h3><p>Estimate monthly payments and understand your loan before you commit.</p></span>
+            <span class="card-bottom"><span class="tag">Finance</span></span>
+            <span class="arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+          </a>
+
+          <a class="tool-card" style="--glow:#5de2e7;--icon-bg:rgba(73,220,220,.12);--icon-color:#70e6e4" href="https://gstinvoicemakerindia.blogspot.com" target="_blank" rel="noopener noreferrer" aria-label="Open GST Invoice Maker in a new tab">
+            <span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"/><path d="M14 3v5h5M8 12h8M8 16h5"/><path d="m8 8 1.2 1.2L11.5 7"/></svg></span>
+            <span class="tool-copy"><h3>GST Invoice Maker</h3><p>Create clean GST invoices with a smoother, more organized workflow.</p></span>
+            <span class="card-bottom"><span class="tag">Business</span></span>
+            <span class="arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+          </a>
+
+          <a class="tool-card" style="--glow:#b7a0ff;--icon-bg:rgba(173,143,255,.13);--icon-color:#c4afff" href="https://myresumecvmaker.blogspot.com" target="_blank" rel="noopener noreferrer" aria-label="Open Resume Builder in a new tab">
+            <span class="tool-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="18" rx="2.2"/><circle cx="12" cy="9" r="2.2"/><path d="M8.5 16c.8-2.6 6.2-2.6 7 0M8 19h8"/></svg></span>
+            <span class="tool-copy"><h3>Resume Builder</h3><p>Put your experience and skills into a professional-looking resume.</p></span>
+            <span class="card-bottom"><span class="tag">Career</span></span>
+            <span class="arrow" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg></span>
+          </a>
+        </div>
+        <div class="note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5m0-8h.01"/></svg>
+          Each tool opens in a new tab, so this page stays ready for you.
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <span class="footer-brand">🛠️ Useful Tools</span>
+        <span>Simple tools for everyday tasks · © <span id="year"></span></span>
+      </div>
+    </footer>
+  </div>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
